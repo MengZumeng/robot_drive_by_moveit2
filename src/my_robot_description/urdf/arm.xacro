@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="0.4 0.4 0.1" />
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+            <material name="grey" />
+        </visual>
+    </link>
+
+    <link name="shoulder_link">
+        <visual>
+            <geometry>
+                <cylinder length="0.5" radius="0.1" />
+            </geometry>
+            <origin xyz="0 0 0.25" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+    </link>
+
+    <link name="arm_link">
+        <visual>
+            <geometry>
+                <cylinder length="0.6" radius="0.05" />
+            </geometry>
+            <origin xyz="0 0 0.3" rpy="0 0 0" />
+            <material name="grey" />
+        </visual>
+    </link>
+
+    <link name="elbow_link">
+        <visual>
+            <geometry>
+                <cylinder length="0.1" radius="0.05" />
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+    </link>
+
+    <link name="forearm_link">
+        <visual>
+            <geometry>
+                <cylinder length="0.5" radius="0.05" />
+            </geometry>
+            <origin xyz="0 0 0.25" rpy="0 0 0" />
+            <material name="grey" />
+        </visual>
+    </link>
+
+    <link name="wrist_link">
+        <visual>
+            <geometry>
+                <box size="0.1 0.1 0.05" />
+            </geometry>
+            <origin xyz="0 0 0.025" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+    </link>
+
+    <link name="hand_link">
+        <visual>
+            <geometry>
+                <box size="0.1 0.1 0.02" />
+            </geometry>
+            <origin xyz="0 0 0.01" rpy="0 0 0" />
+            <material name="grey" />
+        </visual>
+    </link>
+
+    <link name="tool_link" />
+
+    <joint name="joint1" type="revolute">
+        <parent link="base_link" />
+        <child link="shoulder_link" />
+        <origin xyz="0 0 0.1" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" velocity="1.0" lower="-3.14" upper="3.14" />
+    </joint>
+
+    <joint name="joint2" type="revolute">
+        <parent link="shoulder_link" />
+        <child link="arm_link" />
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" velocity="1.0" lower="0" upper="2.5" />
+    </joint>
+
+    <joint name="joint3" type="revolute">
+        <parent link="arm_link" />
+        <child link="elbow_link" />
+        <origin xyz="0 0 0.6" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" velocity="1.0" lower="0" upper="2.5" />
+    </joint>
+
+    <joint name="joint4" type="revolute">
+        <parent link="elbow_link" />
+        <child link="forearm_link" />
+        <origin xyz="0 0 0.1" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" velocity="1.0" lower="-3.14" upper="3.14" />
+    </joint>
+
+    <joint name="joint5" type="revolute">
+        <parent link="forearm_link" />
+        <child link="wrist_link" />
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+    </joint>
+
+    <joint name="joint6" type="continuous">
+        <parent link="wrist_link" />
+        <child link="hand_link" />
+        <origin xyz="0 0 0.05" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <joint name="hand_tool_joint" type="fixed">
+        <parent link="hand_link" />
+        <child link="tool_link" />
+        <origin xyz="0 0 0.02" rpy="0 0 0" />
+    </joint>
+
+</robot>

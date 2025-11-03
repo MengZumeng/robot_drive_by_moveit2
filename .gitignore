@@ -1,0 +1,5 @@
+.vscode/
+build/
+log/
+install/
+.history/
