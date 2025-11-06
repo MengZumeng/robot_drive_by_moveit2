@@ -9,4 +9,12 @@
         <color rgba="0 0 0.5 1" />
     </material>
 
+    <material name="dark_green">
+        <color rgba="0 0.4 0 1" />
+    </material>
+
+    <material name="light_green">
+        <color rgba="0 0.6 0 1" />
+    </material>
+
 </robot>

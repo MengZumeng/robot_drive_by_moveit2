@@ -19,6 +19,11 @@
         <joint name="joint6"/>
         <joint name="hand_tool_joint"/>
     </group>
+    <group name="gripper">
+        <joint name="gripper_base_joint"/>
+        <joint name="gripper_left_finger_joint"/>
+        <joint name="gripper_right_finger_joint"/>
+    </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
     <group_state name="home" group="arm">
         <joint name="joint1" value="0"/>
@@ -44,20 +49,49 @@
         <joint name="joint5" value="1.3285"/>
         <joint name="joint6" value="-1.7659"/>
     </group_state>
+    <group_state name="gripper_open" group="gripper">
+        <joint name="gripper_left_finger_joint" value="0"/>
+    </group_state>
+    <group_state name="gripper_closed" group="gripper">
+        <joint name="gripper_left_finger_joint" value="0.06"/>
+    </group_state>
+    <group_state name="gripper_half_closed" group="gripper">
+        <joint name="gripper_left_finger_joint" value="0.04"/>
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="gripper" parent_link="tool_link" group="gripper" parent_group="arm"/>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="virtual_joint" type="fixed" parent_frame="world" child_link="base_link"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="arm_link" link2="base_link" reason="Never"/>
     <disable_collisions link1="arm_link" link2="elbow_link" reason="Adjacent"/>
+    <disable_collisions link1="arm_link" link2="gripper_base_link" reason="Never"/>
+    <disable_collisions link1="arm_link" link2="gripper_left_finger_link" reason="Never"/>
+    <disable_collisions link1="arm_link" link2="gripper_right_finger_link" reason="Never"/>
     <disable_collisions link1="arm_link" link2="hand_link" reason="Never"/>
     <disable_collisions link1="arm_link" link2="shoulder_link" reason="Adjacent"/>
     <disable_collisions link1="arm_link" link2="wrist_link" reason="Never"/>
     <disable_collisions link1="base_link" link2="shoulder_link" reason="Adjacent"/>
     <disable_collisions link1="elbow_link" link2="forearm_link" reason="Adjacent"/>
+    <disable_collisions link1="elbow_link" link2="gripper_base_link" reason="Never"/>
+    <disable_collisions link1="elbow_link" link2="gripper_left_finger_link" reason="Never"/>
+    <disable_collisions link1="elbow_link" link2="gripper_right_finger_link" reason="Never"/>
     <disable_collisions link1="elbow_link" link2="hand_link" reason="Never"/>
     <disable_collisions link1="elbow_link" link2="shoulder_link" reason="Never"/>
     <disable_collisions link1="elbow_link" link2="wrist_link" reason="Never"/>
+    <disable_collisions link1="forearm_link" link2="gripper_base_link" reason="Never"/>
+    <disable_collisions link1="forearm_link" link2="gripper_left_finger_link" reason="Never"/>
+    <disable_collisions link1="forearm_link" link2="gripper_right_finger_link" reason="Never"/>
     <disable_collisions link1="forearm_link" link2="hand_link" reason="Never"/>
     <disable_collisions link1="forearm_link" link2="wrist_link" reason="Adjacent"/>
+    <disable_collisions link1="gripper_base_link" link2="gripper_left_finger_link" reason="Adjacent"/>
+    <disable_collisions link1="gripper_base_link" link2="gripper_right_finger_link" reason="Adjacent"/>
+    <disable_collisions link1="gripper_base_link" link2="hand_link" reason="Adjacent"/>
+    <disable_collisions link1="gripper_base_link" link2="wrist_link" reason="Never"/>
+    <disable_collisions link1="gripper_left_finger_link" link2="gripper_right_finger_link" reason="Never"/>
+    <disable_collisions link1="gripper_left_finger_link" link2="hand_link" reason="Never"/>
+    <disable_collisions link1="gripper_left_finger_link" link2="wrist_link" reason="Never"/>
+    <disable_collisions link1="gripper_right_finger_link" link2="hand_link" reason="Never"/>
+    <disable_collisions link1="gripper_right_finger_link" link2="wrist_link" reason="Never"/>
     <disable_collisions link1="hand_link" link2="wrist_link" reason="Adjacent"/>
 </robot>

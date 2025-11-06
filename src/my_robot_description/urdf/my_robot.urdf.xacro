@@ -3,5 +3,12 @@
 
     <xacro:include filename="common_properties.xacro" />
     <xacro:include filename="arm.xacro" />
+    <xacro:include filename="gripper.xacro" />
 
+    <joint name="gripper_base_joint" type="fixed">
+        <parent link="tool_link" />
+        <child link="gripper_base_link" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+    
 </robot>
