@@ -13,7 +13,6 @@ moveit_setup_assistant_config:
       - position
     state:
       - position
-      - velocity
   modified_urdf:
     xacros:
       - control_xacro
@@ -22,4 +21,3 @@ moveit_setup_assistant_config:
       - position
     state:
       - position
-      - velocity

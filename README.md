@@ -12,3 +12,12 @@ ros2 launch urdf_tutorial display.launch.py model:=/home/mengzumeng/Repo_Lib/rob
 ros2 run rqt_graph rqt_graph
 
 
+THE SECOND COMMIT
+
+1.完成URDF碰撞属性添加
+
+2.完成moveit config添加
+
+3.尝试在docker中运行，后续为该仓库添加一镜像文件
+
+4.在rviz中进行moveit config测试
