@@ -1,10 +1,3 @@
-以下是完整的 `README.md` 文件内容，可直接复制保存为 `README.md` 并提交到仓库：
-
-```markdown
-# robot_drive_by_moveit2
-
-![MoveIt2](https://moveit.ros.org/assets/logo/moveit_logo-black.png)
-
 ## 项目目的
 本仓库旨在学习和实践 **MoveIt2 运动规划框架**，通过搭建机器人模型、配置 MoveIt2 核心组件及编写控制逻辑，实现机器人的运动规划与实时控制。
 
@@ -38,6 +31,7 @@
    sudo apt update && sudo apt install -y ros-humble-moveit
    ```
 
+
 2. **安装其他依赖包**
    ```bash
    sudo apt install -y \
@@ -56,9 +50,9 @@
    # 克隆本仓库
    git clone https://github.com/MengZumeng/robot_drive_by_moveit2.git
 
-   # 编译工作空间（--symlink-install 支持文件软链接，修改代码无需重新编译）
+   # 编译工作空间
    cd ~/moveit2_ws
-   colcon build --symlink-install
+   colcon build
 
    # 加载环境变量（每次新终端启动需执行，或添加到 ~/.bashrc 永久生效）
    source install/setup.bash
