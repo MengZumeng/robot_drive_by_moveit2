@@ -1,5 +1,5 @@
 #include <rclcpp/rclcpp.hpp>
-#include <moveit/move_group_interface/move_group_interface.hpp>
+#include <moveit/move_group_interface/move_group_interface.h>
 #include <example_interfaces/msg/bool.hpp>
 #include <example_interfaces/msg/float64_multi_array.hpp>
 #include <my_robot_interfaces/msg/pose_command.hpp>
@@ -73,7 +73,7 @@ public:
             waypoints.push_back(target_pose.pose);
             moveit_msgs::msg::RobotTrajectory trajectory;
 
-            double fraction = arm_->computeCartesianPath(waypoints, 0.01, trajectory);
+            double fraction = arm_->computeCartesianPath(waypoints, 0.01, 0.0,trajectory);
 
             if (fraction == 1) {
                 arm_->execute(trajectory);

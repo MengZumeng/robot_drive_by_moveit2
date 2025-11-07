@@ -1,5 +1,5 @@
 #include <rclcpp/rclcpp.hpp>
-#include <moveit/move_group_interface/move_group_interface.hpp>
+#include <moveit/move_group_interface/move_group_interface.h>
 
 int main(int argc, char **argv)
 {
@@ -98,7 +98,7 @@ int main(int argc, char **argv)
 
     moveit_msgs::msg::RobotTrajectory trajectory;
 
-    double fraction = arm.computeCartesianPath(waypoints, 0.01, trajectory);
+    double fraction = arm.computeCartesianPath(waypoints, 0.01, 0.0,trajectory);
 
     if (fraction == 1) {
         arm.execute(trajectory);
